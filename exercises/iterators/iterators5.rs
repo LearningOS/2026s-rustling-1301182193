@@ -11,7 +11,6 @@
 // Execute `rustlings hint iterators5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 use std::collections::HashMap;
 
@@ -39,16 +38,12 @@ fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
 }
 
 fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
-    let mut count = 0;
-    for map in collection {
-        for val in map.values() {
-            if val == &value {
-                count += 1;
-            }
-        }
+    collection
+        .iter()
+        .flat_map(|map| map.values())
+        .filter(|&&v| v == value)
+        .count()
     }
-    count
-}
 
 fn count_collection_iterator(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
     // collection is a slice of hashmaps.
