@@ -13,7 +13,7 @@ where
 {
     value: T,
     left: Option<Box<TreeNode<T>>>,
-    right: Optioin<Box<TreeNode<T>>>,
+    right: Option<Box<TreeNode<T>>>,
 }
 
 #[derive(Debug)]

@@ -3,7 +3,6 @@
 	This problem requires you to implement a sorting algorithm
 	you can use bubble sorting, insertion sorting, heap sorting, etc.
 */
-// I AM NOT DONE
 use std::mem;
 
 
@@ -18,8 +17,8 @@ where T: PartialOrd
     while i < len {
         while j < len - i {
             if j + 1 < len && array[j] > array[j + 1] {
-                mem::swap(&mut array[j], &mut array[j + 1]);
-                //array.swap(j, j + 1);
+                //mem::swap(&mut array[j], &mut array[j + 1]);
+                array.swap(j, j + 1);
             }
             j += 1;
         }
