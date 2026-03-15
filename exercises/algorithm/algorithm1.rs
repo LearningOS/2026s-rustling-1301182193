@@ -69,14 +69,39 @@ impl<T> LinkedList<T> {
             },
         }
     }
-	pub fn merge(list_a:LinkedList<T>,list_b:LinkedList<T>) -> Self
+	pub fn merge(mut list_a:LinkedList<T>, mut list_b:LinkedList<T>) -> Self
+    where T:PartialOrd + Clone
 	{
 		//TODO
-		Self {
-            length: 0,
-            start: None,
-            end: None,
+		let mut res = LinkedList::<T>::new();
+        let mut len_a = list_a.length as i32;
+        let mut len_b = list_b.length as i32;
+        let mut i = 0;
+        let mut j = 0;
+        while i < len_a && j < len_b {
+            let a = list_a.get(i).unwrap();
+            let b = list_b.get(j).unwrap();
+            if a < b {
+                res.add(a.clone());
+                i += 1;
+            }else {
+                res.add(b.clone());
+                j += 1;
+            }
         }
+
+        while i < len_a {
+            let a = list_a.get(i).unwrap();
+            res.add(a.clone());
+            i += 1;
+        }
+
+        while j < len_b {
+            let b = list_b.get(j).unwrap();
+            res.add(b.clone());
+            j += 1;
+        }
+        res
 	}
 }
 
